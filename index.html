@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevQuiz Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <div id="setup-screen" class="screen">
+            <h1><span>{</span> DevQuiz <span>}</span></h1>
+            <input type="text" id="user-name" placeholder="Enter your name..." required>
+            
+            <label for="category-select">Choose Language:</label>
+            <select id="category-select">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+            </select>
+            
+            <button id="start-btn">Start Quiz</button>
+        </div>
+
+        <div id="quiz-screen" class="screen hidden">
+            <div class="stats-bar">
+                <span id="display-name">User</span>
+                <span id="display-level">Level: 1</span>
+                <span id="display-score">Score: 0</span>
+            </div>
+            
+            <div class="card">
+                <p id="question-text">Question text goes here?</p>
+                <div id="choices-container" class="choices-grid">
+                    </div>
+            </div>
+            <div id="feedback"></div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h2>Quiz Complete!</h2>
+            <p id="final-stats"></p>
+            <button onclick="location.reload()">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
