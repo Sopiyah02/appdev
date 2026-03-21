@@ -1,81 +1,68 @@
-:root {
-    --bg-color: #0d1117;
-    --card-bg: #161b22;
-    --accent: #58a6ff;
-    --success: #238636;
-    --error: #da3633;
-    --text: #c9d1d9;
-}
-
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: Arial;
+    background: #0d1117;
+    color: white;
+    text-align: center;
     margin: 0;
+    padding: 0;
 }
 
-.app-container { width: 100%; max-width: 500px; padding: 20px; text-align: center; }
-
-.screen { transition: all 0.3s ease; }
+/* GENERAL */
 .hidden { display: none; }
-
-/* Setup Inputs */
 input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    background: #21262d;
-    border: 1px solid #30363d;
-    color: white;
-    border-radius: 6px;
-}
-
-/* Stats Bar */
-.stats-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    color: var(--accent);
-}
-
-/* Quiz Card */
-.card {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #30363d;
-    margin-bottom: 20px;
-}
-
-/* Choices Grid */
-.choices-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-button {
-    background: var(--accent);
-    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
     border: none;
-    padding: 12px;
-    border-radius: 6px;
+}
+button {
+    padding: 10px;
+    margin: 5px;
     cursor: pointer;
-    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    background: #58a6ff;
+    color: white;
+    transition: 0.2s;
 }
+button:hover { transform: scale(1.05); }
 
-.choice-btn {
-    background: #21262d;
-    border: 1px solid #30363d;
+/* LAYOUT */
+#player-login { 
+    width: 350px; 
+    margin: 50px auto;
 }
+#admin-toggle { position: absolute; top: 20px; right: 20px; }
+#admin-manager-login {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    width: 250px;
+    background: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+}
+#admin-manager-login div { margin-bottom: 20px; }
 
-.choice-btn:hover { background: #30363d; }
+/* DASHBOARD BOXES */
+.dashboard-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.dashboard-avatar { width: 100px; height: 100px; border-radius: 50%; }
 
-.correct { background-color: var(--success) !important; }
-.wrong { background-color: var(--error) !important; }
+/* SIDE BUTTONS */
+.side-btn { align-self: flex-start; margin-left: 20px; }
+
+/* AVATARS */
+#avatars { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+.avatar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: 0.2s; }
+.avatar.selected { border-color: #58a6ff; transform: scale(1.1); }
+
+/* QUIZ CHOICES */
+#choices button { display: block; width: 200px; margin: 5px auto; }
+.correct { background: green; }
+.wrong { background: red; }

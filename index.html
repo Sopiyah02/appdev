@@ -1,49 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevQuiz Master</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevQuiz </title>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="app-container">
-        <div id="setup-screen" class="screen">
-            <h1><span>{</span> DevQuiz <span>}</span></h1>
-            <input type="text" id="user-name" placeholder="Enter your name..." required>
-            
-            <label for="category-select">Choose Language:</label>
-            <select id="category-select">
-                <option value="javascript">JavaScript</option>
-                <option value="python">Python</option>
-            </select>
-            
-            <button id="start-btn">Start Quiz</button>
-        </div>
+<h1>🎮 DevQuiz</h1>
 
-        <div id="quiz-screen" class="screen hidden">
-            <div class="stats-bar">
-                <span id="display-name">User</span>
-                <span id="display-level">Level: 1</span>
-                <span id="display-score">Score: 0</span>
-            </div>
-            
-            <div class="card">
-                <p id="question-text">Question text goes here?</p>
-                <div id="choices-container" class="choices-grid">
-                    </div>
-            </div>
-            <div id="feedback"></div>
-        </div>
+<audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
-        <div id="result-screen" class="screen hidden">
-            <h2>Quiz Complete!</h2>
-            <p id="final-stats"></p>
-            <button onclick="location.reload()">Try Again</button>
-        </div>
+<!-- PLAYER LOGIN -->
+<div id="player-login" class="login-box">
+    <h2>🎮 Player Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <select id="category">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+    </select>
+
+    <h3>Choose Your Avatar</h3>
+    <div id="avatars">
+        <img src="/avatar1.png" class="avatar" alt="Avatar 1">
+        <img src="/avatar2.png" class="avatar" alt="Avatar 2">
+        <img src="/avatar3.png" class="avatar" alt="Avatar 3">
+        <img src="/avatar4.png" class="avatar" alt="Avatar 4">
+        <img src="/avatar5.png" class="avatar" alt="Avatar 5">
     </div>
 
-    <script src="script.js"></script>
+    <button onclick="loginPlayer()">Start Game</button>
+    <button id="admin-toggle" onclick="toggleAdminManager()">Admin/Manager Login</button>
+</div>
+
+<!-- ADMIN/MANAGER LOGIN (Hidden by default) -->
+<div id="admin-manager-login" class="login-box hidden">
+    <h3>🔑 Admin</h3>
+    <input type="text" id="admin-user" placeholder="Username">
+    <input type="password" id="admin-pass" placeholder="Password">
+    <button onclick="loginAdmin()">Login</button>
+
+    <h3>🛠 Manager</h3>
+    <input type="text" id="manager-user" placeholder="Username">
+    <input type="password" id="manager-pass" placeholder="Password">
+    <button onclick="loginManager()">Login</button>
+</div>
+
+<!-- PLAYER DASHBOARD -->
+<div id="player-dashboard" class="hidden">
+    <h2>Player Dashboard</h2>
+    <img id="dashboard-avatar" src="" style="width:100px; height:100px; border-radius:50%;"><br>
+    <span id="dashboard-name"></span><br>
+    <span id="dashboard-score">Score: 0</span><br><br>
+    <button onclick="startQuiz()">Start Quiz</button>
+    <button onclick="logoutPlayer()">⬅ Logout</button>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel" class="hidden">
+    <h2>Admin Panel</h2>
+    <button onclick="logoutAdmin()">⬅ Back</button>
+    <h3>Players Logged In:</h3>
+    <ul id="user-list"></ul>
+</div>
+
+<!-- MANAGER PANEL -->
+<div id="manager-panel" class="hidden">
+    <h2>Manager Panel</h2>
+    <button onclick="logoutManager()">⬅ Back</button>
+    <select id="q-category">
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+    </select>
+    <select id="q-level">
+        <option value="level1">Level 1</option>
+        <option value="level2">Level 2</option>
+    </select>
+    <input id="new-question" placeholder="Question">
+    <input id="choice1" placeholder="Choice 1">
+    <input id="choice2" placeholder="Choice 2">
+    <input id="choice3" placeholder="Choice 3">
+    <input id="answer" placeholder="Correct Answer">
+    <button onclick="addQuestion()">Add Question</button>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="hidden">
+    <button onclick="goBack()">⬅ Back to Dashboard</button>
+    <img id="player-avatar" src="" style="width:50px;height:50px;border-radius:50%;">
+    <h3 id="level"></h3>
+    <h2 id="question"></h2>
+    <div id="choices"></div>
+    <p id="feedback"></p>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="hidden">
+    <h2>🎉 Finished!</h2>
+    <p id="score"></p>
+    <button onclick="goBack()">⬅ Back to Dashboard</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
