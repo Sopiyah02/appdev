@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choose Avatar</title>
+  <style>
+    .avatar {
+      width: 80px;
+      height: 80px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .avatar.selected {
+      border-color: #58a6ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Choose Your Avatar</h1>
+  <div id="avatars">
+    <img src="avatar1.png" class="avatar" alt="Avatar 1" />
+    <img src="avatar2.png" class="avatar" alt="Avatar 2" />
+    <img src="avatar3.png" class="avatar" alt="Avatar 3" />
+    <img src="avatar4.png" class="avatar" alt="Avatar 4" />
+  </div>
+
+  <script>
+    // Avatar select script
+    let playerAvatar = "";
+
+    document.querySelectorAll('.avatar').forEach(img => {
+      img.addEventListener('click', () => {
+        document.querySelectorAll('.avatar').forEach(a => a.classList.remove('selected'));
+        img.classList.add('selected');
+        playerAvatar = img.src;
+        console.log("Selected avatar:", playerAvatar);
+      });
+    });
+  </script>
+
+</body>
+</html>
